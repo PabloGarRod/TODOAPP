@@ -1,0 +1,9 @@
+.container {
+  padding: 3rem;
+}
+
+button {
+  border: 1px solid black;
+  margin: 1px;
+  border-radius: 10%;
+}
