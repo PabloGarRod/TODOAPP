@@ -21,4 +21,10 @@
   <hr />
   <p>(change)</p>
   <input type="number" [value]="person.age" (change)="changeHandler($event)" />
+  <p>(change)</p>
+  <input type="text" [value]="person.age" (change)="changeHandler($event)" />
+  <p>(keydown)</p>
+  <input type="text" [value]="person.name" (keydown)="keydownHandler($event)" />
+  <p>(keydown shift t)</p>
+  <input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()" />
 </div>
