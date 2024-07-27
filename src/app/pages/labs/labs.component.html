@@ -9,24 +9,36 @@
   <hr />
   <h2>{{ "Hola".repeat(4) }}</h2>
   <p>la suma de 3+3 es {{ 3 + 3 }}</p>
-  <p>Hola soy {{ name() }} y tengo {{ person.age }} años</p>
+  <p>Hola soy {{ name() }} y tengo {{ person().age }} años</p>
   <hr />
-  <img [src]="person.avatar" alt="" />
-  <input type="text" [value]="person.age" />
+  <img [src]="person().avatar" alt="" />
+  <input type="text" [value]="person().age" />
   <button [disabled]="disabled">Click me</button>
-  <p>Person: {{ person.name }}</p>
+  <p>Person: {{ person().name }}</p>
   <hr />
   <button (click)="clickHandler()">Click me</button>
   <button (dblclick)="clickHandler()">Double me</button>
   <hr />
   <p>(change)</p>
-  <input type="number" [value]="person.age" (change)="changeHandler($event)" />
+  <input
+    type="number"
+    [value]="person().age"
+    (change)="changeHandler($event)"
+  />
   <p>(change)</p>
-  <input type="text" [value]="person.age" (change)="changeHandler($event)" />
+  <input type="text" [value]="person().age" (change)="changeHandler($event)" />
   <p>(keydown)</p>
-  <input type="text" [value]="person.name" (keydown)="keydownHandler($event)" />
+  <input
+    type="text"
+    [value]="person().name"
+    (keydown)="keydownHandler($event)"
+  />
   <p>(keydown shift t)</p>
-  <input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()" />
+  <input
+    type="text"
+    [value]="person().name"
+    (keydown.shift.t)="clickHandler()"
+  />
   <hr />
   <h1>Signals</h1>
   <input type="text" [value]="name()" (change)="changeHandler($event)" />
@@ -36,4 +48,14 @@
     <p>Total: {{ tasks().length }}</p>
     <li *ngFor="let task of tasks(); index as i">{{ i }} {{ task }}</li>
   </ul>
+  <hr />
+  <div *ngIf="1 !== 1">My content</div>
+  <div *ngIf="name() === 'Pablo'">Soy {{ name() }}</div>
+  <input type="number" [value]="person().age" (change)="changeAge($event)" />
+  <div *ngIf="person().name === 'Pablo' && person().age >= 18; else elseBlock">
+    Soy {{ person().name }} y soy mayor de 18
+  </div>
+  <ng-template #elseBlock>
+    Soy {{ person().name }} y soy menor de 18
+  </ng-template>
 </div>
