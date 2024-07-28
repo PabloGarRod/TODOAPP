@@ -56,6 +56,17 @@
     Soy {{ person().name }} y soy mayor de 18
   </div>
   <ng-template #elseBlock>
-    Soy {{ person().name }} y soy menor de 18
+    <div>Soy {{ person().name }} y soy menor de 18</div>
   </ng-template>
+  <hr />
+  <input type="text" [value]="person().name" (change)="changeName($event)" />
+  <div [ngSwitch]="person().name">
+    <p *ngSwitchCase="'Pablo'">{{ person().name }} es un nombre bonito</p>
+    <p *ngSwitchCase="'Juan'">{{ person().name }} es un nombre feo</p>
+    <p *ngSwitchCase="'Laura'">{{ person().name }} es un nombre de chica</p>
+    <p *ngSwitchCase="'Sakura'">{{ person().name }} es un nombre de japonés</p>
+    <p *ngSwitchCase="'Sara'">{{ person().name }} es un nombre bíblico</p>
+    <p *ngSwitchCase="'Ibai'">{{ person().name }} es un nombre vasco</p>
+    <p *ngSwitchDefault>No conozco ese nombre</p>
+  </div>
 </div>
