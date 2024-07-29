@@ -69,4 +69,7 @@
     <p *ngSwitchCase="'Ibai'">{{ person().name }} es un nombre vasco</p>
     <p *ngSwitchDefault>No conozco ese nombre</p>
   </div>
+  <hr />
+  <input type="color" [formControl]="colorCtrl" />
+  <p>color: {{ colorCtrl.value }}</p>
 </div>
