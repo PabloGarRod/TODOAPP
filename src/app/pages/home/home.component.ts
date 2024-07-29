@@ -32,14 +32,19 @@ export class HomeComponent {
 
   newTaskCntrl = new FormControl('', {
     nonNullable: true,
-    validators: [Validators.required, Validators.pattern(/^(?!\s*$).+/)],
+    validators: [
+      Validators.required,
+      //Validators.pattern(/^(?!\s*$).+/)
+    ],
   });
 
   changeHandler() {
     if (this.newTaskCntrl.valid) {
-      const value = this.newTaskCntrl.value;
-      this.addTask(value);
-      this.newTaskCntrl.reset();
+      const value = this.newTaskCntrl.value.trim();
+      if (value !== '') {
+        this.addTask(value);
+        this.newTaskCntrl.reset();
+      }
     }
   }
 

@@ -7,3 +7,9 @@ button {
   margin: 1px;
   border-radius: 10%;
 }
+
+.box {
+  height: 10px;
+  display: block;
+  background-color: red;
+}

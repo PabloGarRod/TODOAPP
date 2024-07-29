@@ -72,4 +72,18 @@
   <hr />
   <input type="color" [formControl]="colorCtrl" />
   <p>color: {{ colorCtrl.value }}</p>
+  <svg>
+    <g>
+      <rect
+        x="0"
+        y="0"
+        height="100"
+        width="400"
+        [attr.fill]="colorCtrl.value"
+      />
+    </g>
+  </svg>
+  <hr />
+  <input type="number" [formControl]="widthCtrl" />
+  <span class="box" [style.width.px]="widthCtrl.value"></span>
 </div>
