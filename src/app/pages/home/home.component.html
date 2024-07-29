@@ -19,8 +19,10 @@
     <section class="main">
       <ul class="todo-list">
         <li
+          (dblclick)="!task.completed && updateTaskEditingMode(i)"
           *ngFor="let task of tasks(); index as i"
           [class.completed]="task.completed"
+          [class.editing]="task.editing"
         >
           <div class="view">
             <input
@@ -32,7 +34,11 @@
             <label>{{ task.title }}</label>
             <button class="destroy" (click)="deleteTask(i)"></button>
           </div>
-          <input class="edit" value="Buy a unicorn" />
+          <input
+            class="edit"
+            [value]="task.title"
+            (keydown.enter)="updateTaskText(i, $event)"
+          />
         </li>
         <!--
 
