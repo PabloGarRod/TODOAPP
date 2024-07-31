@@ -116,4 +116,28 @@
   <p>
     <input type="text" />
   </p>
+  <hr />
+  <h2>New For</h2>
+  <ul>
+    @for(task of tasks(); track task; let i = $index){
+    <li>{{ i }} {{ task }}</li>
+    } @empty {
+    <strong>La lista está vacia</strong>
+    }
+  </ul>
+  <hr />
+  <h2>New Switch</h2>
+  <div>
+    @switch (person().name) { @case('Pablo'){
+    <div>Nombre del admin</div>
+    } @case('Nico'){
+    <div>Nombre del profe</div>
+    } @case('Sara'){
+    <div>Nombre de chica</div>
+    } @case('Sakura'){
+    <div>Nombre japones</div>
+    } @default {
+    <div>Nombre desconocido</div>
+    } }
+  </div>
 </div>
