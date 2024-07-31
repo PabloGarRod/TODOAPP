@@ -20,7 +20,7 @@
       <ul class="todo-list">
         @for (task of tasksByFilter(); track task; let i = $index) {
         <li
-          (dblclick)="!task.completed && updateTaskEditingMode(i)"
+          (dblclick)="!task.completed && updateTaskEditingMode(task.id)"
           [class.completed]="task.completed"
           [class.editing]="task.editing"
         >
@@ -29,15 +29,15 @@
               class="toggle"
               type="checkbox"
               [checked]="task.completed"
-              (change)="updateTask(i)"
+              (change)="updateTask(task.id)"
             />
             <label>{{ task.title }}</label>
-            <button class="destroy" (click)="deleteTask(i)"></button>
+            <button class="destroy" (click)="deleteTask(task.id)"></button>
           </div>
           <input
             class="edit"
             [value]="task.title"
-            (keydown.enter)="updateTaskText(i, $event)"
+            (keydown.enter)="updateTaskText(task.id, $event)"
           />
         </li>
         }

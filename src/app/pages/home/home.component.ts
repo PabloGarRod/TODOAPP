@@ -88,16 +88,14 @@ export class HomeComponent {
     this.tasks.update((tasks) => [...tasks, newTask]);
   }
 
-  deleteTask(index: number) {
-    this.tasks.update((tasks) =>
-      tasks.filter((task, position) => position !== index)
-    );
+  deleteTask(id: number) {
+    this.tasks.update((tasks) => tasks.filter((task) => id !== task.id));
   }
 
-  updateTask(index: number) {
+  updateTask(id: number) {
     this.tasks.update((tasks) => {
-      return tasks.map((task, position) => {
-        if (position === index) {
+      return tasks.map((task) => {
+        if (id === task.id) {
           return {
             ...task,
             completed: !task.completed,
@@ -108,10 +106,10 @@ export class HomeComponent {
     });
   }
 
-  updateTaskEditingMode(index: number) {
+  updateTaskEditingMode(id: number) {
     this.tasks.update((prevState) => {
-      return prevState.map((task, position) => {
-        if (position === index) {
+      return prevState.map((task) => {
+        if (id === task.id) {
           return {
             ...task,
             editing: true,
@@ -125,11 +123,11 @@ export class HomeComponent {
     });
   }
 
-  updateTaskText(index: number, event: Event) {
+  updateTaskText(id: number, event: Event) {
     const input = event.target as HTMLInputElement;
     this.tasks.update((tasks) => {
-      return tasks.map((task, position) => {
-        if (index === position) {
+      return tasks.map((task) => {
+        if (id === task.id) {
           return {
             ...task,
             title: input.value,
