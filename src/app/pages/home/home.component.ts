@@ -6,7 +6,7 @@ import {
   inject,
   Injector,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Task } from '../../models/task.model';
@@ -15,7 +15,7 @@ import { Filter } from '../../models/task.model';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -140,6 +140,12 @@ export class HomeComponent {
           ...task,
         };
       });
+    });
+  }
+
+  clearCompleted() {
+    this.tasks.update((tasks) => {
+      return tasks.filter((task) => !task.completed);
     });
   }
 
