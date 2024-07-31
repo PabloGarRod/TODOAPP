@@ -51,6 +51,14 @@
   <hr />
   <div *ngIf="1 !== 1">My content</div>
   <div *ngIf="name() === 'Pablo'">Soy {{ name() }}</div>
+  <hr />
+  <h1>Nueva Sintaxis Angular</h1>
+  @if(name()==='Pablo'){
+  <div>Condicional de Pablo</div>
+  }
+
+  <hr />
+
   <input type="number" [value]="person().age" (change)="changeAge($event)" />
   <div *ngIf="person().name === 'Pablo' && person().age >= 18; else elseBlock">
     Soy {{ person().name }} y soy mayor de 18
@@ -58,6 +66,15 @@
   <ng-template #elseBlock>
     <div>Soy {{ person().name }} y soy menor de 18</div>
   </ng-template>
+
+  <h2>If else new Sintax</h2>
+
+  @if(name()==='Pablo' && person().age >=18){
+  <strong>Condicional de Pablo y mayor de edad</strong>
+  } @else {
+  <i>No cumple la condicion</i>
+  }
+
   <hr />
   <input type="text" [value]="person().name" (change)="changeName($event)" />
   <div [ngSwitch]="person().name">
